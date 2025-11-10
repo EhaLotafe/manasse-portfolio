@@ -1,33 +1,42 @@
-'use client'
-import { useState } from 'react'
-import { Player } from '@lottiefiles/react-lottie-player'
-import MotionWrapper from './MotionWrapper'
+'use client';
+
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import MotionWrapper from './MotionWrapper';
+
+// Import dynamique pour empêcher le rendu côté serveur
+const Player = dynamic(
+  () => import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
+  { ssr: false }
+);
 
 export default function ContactForm() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [status, setStatus] = useState<'idle'|'sending'|'success'|'error'>('idle')
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setStatus('sending')
+    e.preventDefault();
+    setStatus('sending');
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      })
+        body: JSON.stringify({ name, email, message }),
+      });
       if (res.ok) {
-        setStatus('success')
-        setName(''); setEmail(''); setMessage('')
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
       } else {
-        setStatus('error')
+        setStatus('error');
       }
     } catch (err) {
-      setStatus('error')
+      setStatus('error');
     } finally {
-      setTimeout(()=> setStatus('idle'), 2500)
+      setTimeout(() => setStatus('idle'), 2500);
     }
   }
 
@@ -43,7 +52,7 @@ export default function ContactForm() {
             <input
               id="name"
               value={name}
-              onChange={(e)=>setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               required
               placeholder="Votre nom"
               className="w-full border rounded px-3 py-2"
@@ -58,7 +67,7 @@ export default function ContactForm() {
               id="email"
               type="email"
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="exemple@domaine.com"
               className="w-full border rounded px-3 py-2"
@@ -72,7 +81,7 @@ export default function ContactForm() {
             <textarea
               id="message"
               value={message}
-              onChange={(e)=>setMessage(e.target.value)}
+              onChange={(e) => setMessage(e.target.value)}
               required
               rows={5}
               placeholder="Votre message..."
@@ -84,14 +93,18 @@ export default function ContactForm() {
             <button
               type="submit"
               className="px-4 py-2 rounded-md bg-navy text-white font-semibold"
-              disabled={status==='sending'}
+              disabled={status === 'sending'}
             >
               {status === 'sending' ? 'Envoi...' : 'Envoyer'}
             </button>
 
             <div aria-live="polite">
-              {status === 'success' && <div className="text-green-600 text-sm">✅ Message envoyé. Merci !</div>}
-              {status === 'error' && <div className="text-red-600 text-sm">❌ Erreur. Réessayer plus tard.</div>}
+              {status === 'success' && (
+                <div className="text-green-600 text-sm">✅ Message envoyé. Merci !</div>
+              )}
+              {status === 'error' && (
+                <div className="text-red-600 text-sm">❌ Erreur. Réessayez plus tard.</div>
+              )}
             </div>
           </div>
         </form>
@@ -118,5 +131,5 @@ export default function ContactForm() {
         </div>
       </div>
     </MotionWrapper>
-  )
+  );
 }
