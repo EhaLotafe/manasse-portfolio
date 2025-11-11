@@ -22,7 +22,6 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     /* Dépréciation TS6+ */
-    "ignoreDeprecations": "6.0",
     /* Plugins */
     "plugins": [
       {
