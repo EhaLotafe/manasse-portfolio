@@ -1,200 +1,148 @@
 "use client";
 
-import {
-  FaLinkedin,
-  FaGithub,
-  FaEnvelope,
-  FaPhone,
-  FaWhatsapp,
-  FaGlobe,
-} from "react-icons/fa";
-import { IconType } from "react-icons";
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
+import { 
+  FaLinkedin, FaGithub, FaWhatsapp, FaFacebook, FaShoppingBag 
+} from "react-icons/fa";
+import { 
+  Mail, Phone, Globe, ArrowUpRight, Cpu, Layers, ExternalLink 
+} from "lucide-react";
 
-// Typage d’un item de contact
-interface ContactItemProps {
-  Icon: IconType;
-  iconClass: string;
-  href: string;
-  text: string;
-  target?: string;
-}
-
-// Animation Framer Motion de base
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+// --- Animation des colonnes ---
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
-  }),
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" }
+  })
 };
 
-// Élément individuel de contact
-const ContactItem: React.FC<ContactItemProps & { index: number }> = ({
-  Icon,
-  iconClass,
-  href,
-  text,
-  target = "_blank",
-  index,
-}) => (
-  <motion.li
-    custom={index}
-    variants={fadeUp}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
+// --- Sous-composant pour les liens ---
+const FooterLink = ({ href, icon: Icon, text, external = true }: any) => (
+  <a
+    href={href}
+    target={external ? "_blank" : "_self"}
+    rel={external ? "noopener noreferrer" : undefined} // Correction Sécurité
+    className="group flex items-center justify-between p-3 rounded-xl bg-overcome-secondary/30 border border-white/5 hover:border-overcome-accent/30 hover:bg-overcome-accent/5 transition-all duration-300"
   >
-    <a
-      href={href}
-      target={target}
-      rel="noopener noreferrer"
-      className="flex items-center w-full p-3 rounded-xl bg-[var(--light)] hover:bg-[var(--teal)] hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out border border-gray-200"
-    >
-      <Icon className={`text-2xl mr-3 ${iconClass}`} />
-      <span className="font-medium text-[var(--dark)]">{text}</span>
-    </a>
-  </motion.li>
+    <div className="flex items-center gap-3">
+      <Icon className="text-text-muted group-hover:text-overcome-accent transition-colors" size={18} />
+      <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{text}</span>
+    </div>
+    <ArrowUpRight size={14} className="text-text-muted opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+  </a>
 );
 
-// Composant principal
-export default function ContactCard() {
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="p-4 sm:p-10 max-w-2xl mx-auto"
-    >
-      {/* En-tête */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-4xl font-extrabold text-[var(--navy)]">
-          Connectez-vous avec moi !
-        </h2>
-        <p className="text-[var(--dark)] opacity-70 mt-2 text-lg">
-          Accédez rapidement à mes réseaux et contacts.
-        </p>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: "80px" }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-3 h-1 bg-[var(--gold)] mx-auto rounded-full"
-        ></motion.div>
-      </motion.div>
+    <footer className="relative mt-20 pt-20 pb-10 overflow-hidden border-t border-white/5 bg-overcome-bg">
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-overcome-accent/5 blur-[120px] -z-10" />
 
-      {/* Contenu des cartes */}
-      <div className="space-y-8">
-        {/* Bloc Identité */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-          className="bg-white shadow-lg hover:shadow-2xl rounded-2xl p-6 border-t-4 border-[var(--blue)]"
-        >
-          <h3 className="text-2xl font-bold mb-5 text-[var(--blue)] flex items-center gap-2">
-            🌐 Identité & Plateformes
-          </h3>
-          <ul className="space-y-3">
-            <ContactItem
-              Icon={FaGlobe}
-              iconClass="text-[var(--blue)]"
-              href="https://portfolio-catalog.vercel.app/"
-              text="Portfolio (Mon travail)"
-              index={1}
-            />
-            <ContactItem
-              Icon={FaLinkedin}
-              iconClass="text-[var(--blue)]"
-              href="https://www.linkedin.com/in/eha-lotafe"
-              text="LinkedIn (Professionnel)"
-              index={2}
-            />
-            <ContactItem
-              Icon={FaGithub}
-              iconClass="text-[var(--dark)]"
-              href="https://github.com/EhaLotafe"
-              text="GitHub (Projets Code)"
-              index={3}
-            />
-          </ul>
-        </motion.div>
+      <div className="container-max">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* --- COLONNE 1 : BRANDING --- */}
+          <motion.div 
+            custom={0} variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} 
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-lg bg-overcome-accent flex items-center justify-center text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                <Cpu size={24} />
+              </div>
+              <span className="text-xl font-display font-bold tracking-tight text-text-primary uppercase">
+                Overcome<span className="text-overcome-accent">.</span>
+              </span>
+            </div>
+            <p className="text-sm text-text-secondary leading-relaxed">
+              Architecte Digital & Développeur Fullstack. <br />
+              Je conçois des solutions numériques pragmatiques, scalables et centrées sur l'impact en RDC.
+            </p>
+            <div className="flex gap-4">
+              {/* Correction Accessibilité (aria-label) et Sécurité (rel) */}
+              <a 
+                href="https://github.com/EhaLotafe" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Voir mon profil GitHub"
+                className="p-2.5 rounded-lg bg-white/5 text-text-muted hover:text-overcome-accent hover:bg-overcome-accent/10 transition-all"
+              >
+                <FaGithub size={20} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/eha-lotafe" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Suivre mon profil LinkedIn"
+                className="p-2.5 rounded-lg bg-white/5 text-text-muted hover:text-overcome-accent hover:bg-overcome-accent/10 transition-all"
+              >
+                <FaLinkedin size={20} />
+              </a>
+              <a 
+                href="https://www.facebook.com/manasse.eha.lotafe" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Me contacter sur Facebook"
+                className="p-2.5 rounded-lg bg-white/5 text-text-muted hover:text-overcome-accent hover:bg-overcome-accent/10 transition-all"
+              >
+                <FaFacebook size={20} />
+              </a>
+            </div>
+          </motion.div>
 
-        {/* Bloc Boutiques */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-          className="bg-white shadow-lg hover:shadow-2xl rounded-2xl p-6 border-t-4 border-[var(--green)]"
-        >
-          <h3 className="text-2xl font-bold mb-5 text-[var(--green)] flex items-center gap-2">
-            🛍️ Produits / Boutiques
-          </h3>
-          <ul className="space-y-3">
-            <ContactItem
-              Icon={FaGlobe}
-              iconClass="text-[var(--green)]"
-              href="https://iapductk.mychariow.shop"
-              text="Chariow Boutique #1"
-              index={1}
-            />
-            <ContactItem
-              Icon={FaGlobe}
-              iconClass="text-[var(--green)]"
-              href="https://osazgjlt.mychariow.shop"
-              text="Chariow Boutique #2"
-              index={2}
-            />
-          </ul>
-        </motion.div>
+          {/* --- COLONNE 2 : ÉCOSYSTÈME --- */}
+          <motion.div custom={1} variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-overcome-accent flex items-center gap-2">
+              <Layers size={14} /> Écosystème
+            </h4>
+            <div className="flex flex-col gap-3">
+              <FooterLink href="https://portfolio-catalog.vercel.app/" icon={Globe} text="Portfolio Principal" />
+              <FooterLink href="https://github.com/EhaLotafe?tab=repositories" icon={ExternalLink} text="Open Source Lab" />
+            </div>
+          </motion.div>
 
-        {/* Bloc Contacts */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-          className="bg-white shadow-lg hover:shadow-2xl rounded-2xl p-6 border-t-4 border-[var(--gold)]"
-        >
-          <h3 className="text-2xl font-bold mb-5 text-[var(--gold)] flex items-center gap-2">
-            📩 Contacts Personnels
-          </h3>
-          <ul className="space-y-3">
-            <ContactItem
-              Icon={FaEnvelope}
-              iconClass="text-[var(--gold)]"
-              href="mailto:overcomeeha@gmail.com"
-              text="overcomeeha@gmail.com"
-              target="_self"
-              index={1}
-            />
-            <ContactItem
-              Icon={FaPhone}
-              iconClass="text-[var(--green)]"
-              href="tel:+243817517378"
-              text="+243 817517378 (Téléphone)"
-              target="_self"
-              index={2}
-            />
-            <ContactItem
-              Icon={FaWhatsapp}
-              iconClass="text-[var(--green)]"
-              href="https://wa.me/243990918934"
-              text="+243 990918934 (WhatsApp)"
-              index={3}
-            />
-            <ContactItem
-              Icon={FaGlobe}
-              iconClass="text-[var(--blue)]"
-              href="https://www.facebook.com/manasse.eha.lotafe"
-              text="Facebook"
-              index={4}
-            />
-          </ul>
-        </motion.div>
+          {/* --- COLONNE 3 : PRODUITS --- */}
+          <motion.div custom={2} variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-overcome-success flex items-center gap-2">
+              <FaShoppingBag size={12} /> Produits & IA
+            </h4>
+            <div className="flex flex-col gap-3">
+              <FooterLink href="https://iapductk.mychariow.shop" icon={FaShoppingBag} text="IA Resources Shop" />
+              <FooterLink href="https://osazgjlt.mychariow.shop" icon={FaShoppingBag} text="Overcome Shop" />
+              <FooterLink href="https://wa.me/243990918934" icon={FaWhatsapp} text="Consultation Digital" />
+            </div>
+          </motion.div>
+
+          {/* --- COLONNE 4 : CONTACT --- */}
+          <motion.div custom={3} variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
+            <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-overcome-highlight flex items-center gap-2">
+              <Mail size={14} /> Contact Direct
+            </h4>
+            <div className="flex flex-col gap-3">
+              <FooterLink href="mailto:overcomeeha@gmail.com" icon={Mail} text="overcomeeha@gmail.com" external={false} />
+              <FooterLink href="tel:+243817517378" icon={Phone} text="+243 817 517 378" external={false} />
+              <FooterLink href="https://wa.me/243990918934" icon={FaWhatsapp} text="WhatsApp Business" />
+            </div>
+          </motion.div>
+
+        </div>
+
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-text-muted">
+          <p>© {currentYear} Overcome Solution. Tous droits réservés.</p>
+          <div className="flex items-center gap-6">
+            <p className="flex items-center gap-2">
+              Bâti par <span className="text-red-500 animate-pulse">Eha Lotafe</span> à Lubumbashi
+            </p>
+            <p className="font-mono text-overcome-accent/50 bg-overcome-accent/5 px-2 py-1 rounded">
+              v2.0.26
+            </p>
+          </div>
+        </div>
       </div>
-    </motion.div>
+    </footer>
   );
 }

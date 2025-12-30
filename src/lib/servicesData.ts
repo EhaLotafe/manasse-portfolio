@@ -1,47 +1,69 @@
+import { 
+  Code2, 
+  Rocket, 
+  Cpu, 
+  Palette, 
+  ShieldCheck, 
+  Smartphone,
+  LucideIcon 
+} from 'lucide-react';
 
-// src/lib/servicesData.ts
 export type Service = {
-  id: string
-  title: string
-  description: string
-  stack?: string[]
-}
+  id: string;
+  title: string;
+  description: string;
+  stack: string[];
+  icon: LucideIcon;
+  color: string;
+};
 
 export const services: Service[] = [
   {
     id: 'web-saas',
-    title: 'Développement d’applications Web & SaaS',
-    description: 'Conception de plateformes web modernes (React, Tailwind, Node/TypeScript, API). Mise en place de systèmes multi-rôles, dashboards, automatisations et infrastructures cloud.',
-    stack: ['React', 'Tailwind', 'Node.js', 'TypeScript', 'API', 'Cloud']
+    title: 'Ingénierie Web & SaaS',
+    description: 'Conception d’architectures logicielles modernes et scalables. Développement de plateformes multi-rôles, dashboards complexes et infrastructures cloud sécurisées.',
+    stack: ['React', 'Next.js 14', 'Node.js', 'PostgreSQL', 'SaaS Architecture'],
+    icon: Code2,
+    color: 'text-overcome-accent' // Bleu
+  },
+  {
+    id: 'ia-integration',
+    title: 'IA & Automations Métier',
+    description: 'Intégration d’agents intelligents (LLM) et automatisation de workflows pour booster la productivité. Transformation de vos processus internes grâce à l’IA générative.',
+    stack: ['OpenAI', 'Agents IA', 'RAG', 'Workflow Automation', 'Python'],
+    icon: Cpu,
+    color: 'text-overcome-success' // Vert
   },
   {
     id: 'product-strategy',
     title: 'Stratégie Produit & MVP',
-    description: 'Accompagnement complet pour lancer un produit digital : architecture fonctionnelle, feuille de route, priorisation des features, structuration MVP et déploiement.',
-    stack: ['Architecture', 'Roadmap', 'MVP', 'Gestion de projet']
-  },
-  {
-    id: 'ia-integration',
-    title: 'Intégration de l’IA dans les processus métier',
-    description: 'Conception de solutions augmentées par l’IA : automatisations, agents IA, amélioration du contenu, génération créative et intégrations sur mesure selon les besoins business.',
-    stack: ['IA', 'Automatisation', 'Agents IA', 'Intégration sur mesure']
+    description: 'Accompagnement de l’idée au déploiement. Définition de la roadmap, priorisation des fonctionnalités critiques et structuration technique pour un lancement rapide.',
+    stack: ['Product Thinking', 'MVP Design', 'Agile', 'Scalability Strategy'],
+    icon: Rocket,
+    color: 'text-overcome-highlight' // Or/Ambre
   },
   {
     id: 'branding-ia',
-    title: 'Branding Digital & Contenu IA',
-    description: 'Création d’identités digitales distinctives, contenus optimisés pour visibilité, influence et conversion. Accompagnement sur IA générative, prompts, positionnement et communication digitale.',
-    stack: ['Branding', 'IA générative', 'Contenu digital']
+    title: 'Branding & Contenu IA',
+    description: 'Création d’identités visuelles distinctives et de stratégies de contenu assistées par IA. Optimisation de votre présence numérique pour la conversion et l’influence.',
+    stack: ['Midjourney', 'Digital Branding', 'Prompt Engineering', 'Copywriting'],
+    icon: Palette,
+    color: 'text-overcome-accent' // Bleu
   },
   {
     id: 'tech-support',
-    title: 'Conseil & Support Technique',
-    description: 'Assistance sur projets web et écosystèmes digitaux : audits techniques, optimisation, refonte, amélioration UX/UI, scalabilité et bonnes pratiques de développement.',
-    stack: ['Audit', 'Optimisation', 'UX/UI', 'Scalabilité']
+    title: 'Audit & Optimisation Tech',
+    description: 'Analyse approfondie de vos systèmes existants. Refonte UX/UI, optimisation de performance, sécurisation des données et mise aux normes de votre stack technique.',
+    stack: ['Security Audit', 'Performance Optimization', 'UX/UI Refactor'],
+    icon: ShieldCheck,
+    color: 'text-text-muted' // Gris/Muted
   },
   {
-    id: 'lowcost-solutions',
-    title: 'Focus spécial : outils numériques pour PME locales',
-    description: 'Création d’outils low cost, efficaces et scalables pour petites entreprises locales (RDC / Afrique), adaptés aux contraintes de connectivité et ressources limitées.',
-    stack: ['PME', 'Low-cost', 'Scalable', 'Afrique']
+    id: 'local-pme',
+    title: 'Solutions Low-Tech pour PME',
+    description: 'Développement d’outils pragmatiques et économiques adaptés aux réalités du terrain (RDC/Afrique). Focus sur l’accessibilité, le hors-ligne et la faible connectivité.',
+    stack: ['USSD', 'SMS Gateway', 'Offline-First', 'Cost-Effective Tech'],
+    icon: Smartphone,
+    color: 'text-overcome-success' // Vert
   }
-]
+];

@@ -1,117 +1,101 @@
-// src/components/AboutSection.tsx
 'use client'
 
 import MotionWrapper from './MotionWrapper'
+import { Code2, Lightbulb, Rocket, Target, Cpu, Database } from 'lucide-react'
 
 export default function AboutSection() {
   return (
-    <MotionWrapper>
-      <div className="space-y-16">
-        {/* ======================= */}
-        {/* SECTION À PROPOS */}
-        {/* ======================= */}
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h2 className="text-3xl font-title mb-4">À propos</h2>
-            <p className="mb-4">
-              Je suis <strong>Manasse Lotafe</strong>, développeur orienté solutions avec une vision : utiliser le numérique pour résoudre des problèmes réels, concrets et scalables en Afrique — en particulier en RDC. Je conçois et construis des systèmes utiles : plateformes métiers, gestion de stocks, éducation digitale, automations intelligentes, SaaS… en combinant analyse, ingénierie logicielle et impact business.
-            </p>
-            <p className="mb-4">
-              J’apprends vite, je teste, j’itère, et je cherche à produire des outils pratiques, accessibles, qui créent de la valeur immédiatement — pas juste du code pour du code.  
-              Ma mission long terme : construire une entreprise technologique qui relie agri + éducation + logiciel, former les jeunes et ouvrir des perspectives.
-            </p>
-            <p>
-              Tech que j'utilise :<br />
-              <strong>Back-end:</strong> TypeScript (Express), Python, PHP<br />
-              <strong>ORM / DB:</strong> Drizzle ORM, PostgreSQL, SQL<br />
-              <strong>Front:</strong> HTML / CSS / JS / Vue.js<br />
-              <strong>Autres:</strong> API REST, Auth, Security, Stock analysis, automatisations
-            </p>
-          </div>
-          <div>
-            <div className="bg-white rounded-xl p-6 shadow space-y-4">
-              <h3 className="font-semibold mb-2">Mission</h3>
-              <p>Construire des solutions numériques pragmatiques, accessibles et intelligentes qui favorisent l’innovation locale et la scalabilité.</p>
-              <hr className="my-4" />
-              <h3 className="font-semibold mb-2">Vision</h3>
-              <p>Créer des plateformes durables, scalables, accessibles et adaptées à des environnements contraints, notamment en zones à faible connectivité.</p>
-            </div>
-          </div>
-        </div>
+    <section className="py-20 relative overflow-hidden">
+      {/* Halo lumineux de fond */}
+      <div className="hero-mesh" />
 
-        {/* ======================= */}
-        {/* SECTION PROJETS */}
-        {/* ======================= */}
-        <div>
-          <h2 className="text-3xl font-title mb-6">Projets</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Projet 1 */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">AgriConnect – Plateforme agro-commerce</h3>
-              <p>
-                Solution digitale permettant de connecter agriculteurs ruraux et acheteurs urbains via un modèle hybride (Web + USSD/SMS). Rôles multi-accès, gestion des offres agricoles, commandes, système de confiance et orientation vers un modèle marketplace évolutif.
+      <MotionWrapper>
+        <div className="container-max space-y-24">
+          
+          {/* --- BIOGRAPHIE & VISION --- */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold font-display">
+                L'ingénierie au service de <span className="text-overcome-accent">l'impact.</span>
+              </h2>
+              <p className="text-lg text-text-secondary leading-relaxed">
+                Je suis <strong className="text-text-primary">Manassé Eha-lotafe</strong>, Architecte Digital spécialisé dans la conception de produits numériques à forte valeur ajoutée. 
               </p>
-            </div>
-            {/* Projet 2 */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">GIFA – Gestion intelligente de facturation (MVP)</h3>
-              <p>
-                Application web pour digitaliser les opérations de facturation pour PME et structures locales. Suivi des paiements, génération des factures, tableaux de bord, gestion des rôles utilisateurs et déploiement cloud (Vercel + Railway).
+              <p className="text-text-secondary">
+                Basé à Lubumbashi, je ne me contente pas de "coder". Je bâtis des écosystèmes : 
+                du SaaS éducatif aux solutions AgriTech hybrides, en passant par l'automatisation intelligente. 
+                Ma mission est de transformer les contraintes locales en opportunités technologiques scalables.
               </p>
+              
+              {/* Stack Technique Rapide */}
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="flex items-center gap-3 text-sm font-medium text-text-primary">
+                  <Cpu className="w-5 h-5 text-overcome-accent" />
+                  TypeScript / Node.js
+                </div>
+                <div className="flex items-center gap-3 text-sm font-medium text-text-primary">
+                  <Database className="w-5 h-5 text-overcome-accent" />
+                  PostgreSQL / Drizzle
+                </div>
+                <div className="flex items-center gap-3 text-sm font-medium text-text-primary">
+                  <Code2 className="w-5 h-5 text-overcome-accent" />
+                  React / Next.js 14
+                </div>
+                <div className="flex items-center gap-3 text-sm font-medium text-text-primary">
+                  <Rocket className="w-5 h-5 text-overcome-accent" />
+                  IA & Automation
+                </div>
+              </div>
             </div>
-            {/* Projet 3 */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">EduPay – Paiement scolaire digitalisé (Prototype)</h3>
-              <p>
-                Automatisation du suivi des frais scolaires : inscription, paiements, relances, état des élèves et reporting pour comptables/administration scolaire. Réduction des erreurs humaines et gain d’efficacité administrative.
-              </p>
-            </div>
-            {/* Projet 4 */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">L’Art du Plaisir – Produit digital et programme privé</h3>
-              <p>
-                Produit premium incluant un livre numérique, un programme d’accompagnement et un canal privé. Focus sur développement personnel masculin, confiance, discipline et performance.
-              </p>
-            </div>
-            {/* Projet 5 */}
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Portfolio IA & Branding</h3>
-              <p>
-                Catalogue IA regroupant prompts avancés, identités visuelles et créations AI-assisted destinées aux créateurs, entrepreneurs et marques.
-              </p>
-            </div>
-          </div>
-        </div>
 
-        {/* ======================= */}
-        {/* SECTION SERVICES */}
-        {/* ======================= */}
-        <div>
-          <h2 className="text-3xl font-title mb-6">Services</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Développement d’applications Web & SaaS</h3>
-              <p>Conception de plateformes web modernes (React, Tailwind, Node/TypeScript, API). Mise en place de systèmes multi-rôles, dashboards, automatisations et infrastructures cloud.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Stratégie Produit & MVP</h3>
-              <p>Accompagnement complet pour lancer un produit digital : architecture fonctionnelle, feuille de route, priorisation des features, structuration MVP et déploiement.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Intégration de l’IA dans les processus métier</h3>
-              <p>Conception de solutions augmentées par l’IA : automatisations, agents IA, amélioration du contenu, génération créative et intégrations sur mesure selon les besoins business.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Branding Digital & Contenu IA</h3>
-              <p>Création d’identités digitales distinctives, contenus optimisés pour visibilité, influence et conversion. Accompagnement sur IA générative, prompts, positionnement et communication digitale.</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="font-semibold mb-2">Conseil & Support Technique</h3>
-              <p>Assistance sur projets web et écosystèmes digitaux : audits techniques, optimisation, refonte, amélioration UX/UI, scalabilité et bonnes pratiques de développement.</p>
+            {/* Cartes Mission / Vision */}
+            <div className="grid gap-6">
+              <div className="glass-card p-8 space-y-4 border-l-4 border-l-overcome-accent">
+                <div className="flex items-center gap-3">
+                  <Target className="w-6 h-6 text-overcome-accent" />
+                  <h3 className="text-xl font-bold font-display">Ma Mission</h3>
+                </div>
+                <p className="text-text-secondary">
+                  Démocratiser l'accès aux outils numériques d'élite pour les PME et structures locales en RDC, par des solutions pragmatiques et performantes.
+                </p>
+              </div>
+
+              <div className="glass-card p-8 space-y-4 border-l-4 border-l-overcome-success">
+                <div className="flex items-center gap-3">
+                  <Lightbulb className="w-6 h-6 text-overcome-success" />
+                  <h3 className="text-xl font-bold font-display">Ma Vision</h3>
+                </div>
+                <p className="text-text-secondary">
+                  Devenir le pont entre l'innovation globale et le terrain local, en bâtissant une agence tech qui forme, produit et transforme.
+                </p>
+              </div>
             </div>
           </div>
+
+          {/* --- PHILOSOPHIE DE TRAVAIL --- */}
+          <div className="pt-10">
+            <div className="section-title">
+              <h2 className="text-3xl font-bold">Pourquoi travailler avec moi ?</h2>
+              <div className="underline-accent" />
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+              <div className="glass-card p-6 text-center space-y-3">
+                <h4 className="font-bold text-overcome-accent">Pragmatisme</h4>
+                <p className="text-sm">Je livre des produits qui fonctionnent, même dans des conditions de connectivité difficiles.</p>
+              </div>
+              <div className="glass-card p-6 text-center space-y-3">
+                <h4 className="font-bold text-overcome-accent">Transparence</h4>
+                <p className="text-sm">Chaque ligne de code répond à un besoin business précis. Pas de superflu.</p>
+              </div>
+              <div className="glass-card p-6 text-center space-y-3">
+                <h4 className="font-bold text-overcome-accent">Évolutivité</h4>
+                <p className="text-sm">Mes architectures sont conçues pour grandir avec votre entreprise, de 10 à 10 000 utilisateurs.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </MotionWrapper>
+      </MotionWrapper>
+    </section>
   )
 }

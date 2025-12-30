@@ -1,92 +1,111 @@
-// src/lib/projectsData.ts
+export type ProjectStatus = 'Live' | 'En développement' | 'MVP Ready' | 'Concept';
+
 export type Project = {
-  id: string
-  title: string
-  stack: string[]
-  description: string
-  image: string
-  kpis?: string[]
-}
+  id: string;
+  title: string;
+  category: string;
+  status: ProjectStatus;
+  stack: string[];
+  description: string;
+  impact: string;
+  image: string;
+  featured: boolean;
+  links?: {
+    demo?: string;
+    github?: string;
+  };
+};
 
 export const projects: Project[] = [
   {
-    id: 'agri',
-    title: 'AgriConnect – Plateforme agro-commerce',
-    stack: ['React','Node.js','MongoDB','USSD/SMS'],
-    description: 'Solution digitale permettant de connecter agriculteurs ruraux et acheteurs urbains via un modèle hybride (Web + USSD/SMS). Rôles multi-accès, gestion des offres agricoles, commandes, système de confiance et orientation vers un modèle marketplace évolutif.',
-    image: '/projects/agric-connect.jpeg',
-    kpis: ['Auth multi-rôle', 'UI low-connectivity', 'Marketplace évolutive']
-  },
-  {
-    id: 'gifa',
-    title: 'GIFA – Gestion intelligente de facturation (MVP)',
-    stack: ['React','Node.js','Express','PostgreSQL'],
-    description: 'Application web pour digitaliser les opérations de facturation pour PME et structures locales. Suivi des paiements, génération des factures, tableaux de bord, gestion des rôles utilisateurs et déploiement cloud (Vercel + Railway).',
-    image: '/projects/gifa.png',
-    kpis: ['MVP fonctionnel', 'Tableaux de bord', 'Déploiement cloud']
-  },
-  {
-    id: 'edupay',
-    title: 'EduPay – Paiement scolaire digitalisé (Prototype/Concept)',
-    stack: ['Express','TypeScript','PostgreSQL','Web'],
-    description: 'Automatisation du suivi des frais scolaires : inscription, paiements, relances, état des élèves et reporting pour comptables/administration scolaire. Réduction des erreurs humaines et gain d’efficacité administrative.',
-    image: '/projects/edupay.jpeg',
-    kpis: ['Réduction erreurs', 'Reporting temps réel', 'Traçabilité']
-  },
-  {
-    id: 'art-plaisir',
-    title: 'L’Art du Plaisir – Produit digital et programme privé',
-    stack: ['Web','PDF','Programme digital'],
-    description: 'Produit premium incluant un livre numérique, un programme d’accompagnement et un canal privé. Focus sur développement personnel masculin, confiance, discipline et performance.',
-    image: '/projects/art-du-plaisir.jpeg',
-    kpis: ['Produit premium', 'Programme digital', 'Canal privé']
-  },
-  {
-    id: 'portfolio-ia',
-    title: 'Portfolio IA & Branding',
-    stack: ['AI','Design','Branding'],
-    description: 'Catalogue IA regroupant prompts avancés, identités visuelles et créations AI-assisted destinées aux créateurs, entrepreneurs et marques.',
-    image: '/projects/portfolio-ia.jpeg',
-    kpis: ['Prompts avancés', 'Identités visuelles', 'AI-assisted']
-  },
-  {
-    id: 'school-platform',
-    title: 'Plateforme scolaire modulaire',
-    stack: ['Express','PostgreSQL','Drizzle ORM','WebSocket'],
-    description: 'Gestion étudiants, enseignants, parents, notes, paiements, devoirs, ressources, calendrier et messagerie temps réel via WebSocket.',
+    id: 'klasika-saas',
+    title: 'Klasika 2.0',
+    category: 'SaaS / EdTech',
+    status: 'MVP Ready',
+    featured: true,
+    stack: ['TypeScript', 'Express', 'Drizzle ORM', 'PostgreSQL', 'WebSockets'],
+    description: 'Une plateforme SaaS complète de gestion scolaire. Centralise le suivi pédagogique, administratif et financier avec une architecture multi-rôles (Admin, Prof, Parent, Élève).',
+    impact: 'Architecture 2026 avec authentification 2FA et moteur de statistiques SQL avancé.',
     image: '/projects/school-platform.png',
-    kpis: ['WebSocket messaging', 'Gestion complète école', 'Reporting intégré']
+    links: { github: 'https://github.com/EhaLotafe' }
   },
   {
-    id: 'stock-system',
-    title: 'Système de gestion de stock (V1 / V2 en cours)',
-    stack: ['PHP','SQL','Excel','PDF','API'],
-    description: 'Gestion des mouvements, marges, alertes, export Excel/PDF et intégration WooCommerce/POS pour plusieurs petits commerces.',
-    image: '/projects/stock-system.png',
-    kpis: ['Gestion complète stock', 'Alertes automatisées', 'Export multi-format']
+    id: 'edupay-rdc',
+    title: 'EduPay RDC',
+    category: 'Fintech / EdTech',
+    status: 'En développement',
+    featured: true,
+    stack: ['React Native', 'Node.js', 'PostgreSQL', 'Mobile Payment'],
+    description: 'Solution mobile facilitant le paiement sécurisé des frais scolaires en RDC. Vise à éliminer les files d’attente et à automatiser la perception pour les écoles.',
+    impact: 'Transparence totale des flux financiers et gain de temps majeur pour les parents.',
+    image: '/projects/edupay.jpeg'
   },
   {
-    id: 'vitrine-lub',
-    title: 'Plateforme vitrine / annuaire nouveaux arrivants à Lubumbashi',
-    stack: ['Django','Web'],
-    description: 'Permet de découvrir services, structures et contacts utiles pour les nouveaux arrivants à Lubumbashi.',
+    id: 'agriconnect',
+    title: 'AgriConnect',
+    category: 'AgriTech',
+    status: 'MVP Ready',
+    featured: true,
+    stack: ['React', 'Node.js', 'MongoDB', 'USSD/SMS API'],
+    description: 'Plateforme hybride web & low-tech connectant les agriculteurs ruraux aux acheteurs urbains sans nécessiter de connexion internet permanente.',
+    impact: 'Digitalisation du circuit court et autonomisation des producteurs locaux.',
+    image: '/projects/agric-connect.jpeg'
+  },
+  {
+    id: 'citylinker',
+    title: 'CityLinker Lubumbashi',
+    category: 'CivicTech / Business',
+    status: 'Live',
+    featured: true,
+    stack: ['React', 'Node.js', 'Supabase', 'Tailwind CSS'],
+    description: 'Annuaire numérique interactif pour la ville de Lubumbashi. Permet de découvrir des services vérifiés et aux PME de gérer leur visibilité.',
+    impact: 'Centralisation des informations commerciales fiables dans le Haut-Katanga.',
     image: '/projects/vitrine-lub.png',
-    kpis: ['Annuaire pratique', 'Découverte services', 'Web responsive']
+    links: { demo: 'https://city-linker.vercel.app' }
   },
   {
-    id: 'chatbots-cozo',
-    title: 'Chatbots personnalisés pour entreprises (Cozo DB)',
-    stack: ['Chatbot','Node.js','IA'],
-    description: 'Automatisation de réponses métier avec knowledge base structurée et intégration aux processus internes.',
-    image: '/projects/chatbots-cozo.jpeg',
-    kpis: ['Automatisation métier', 'Knowledge base', 'IA intégrée']
+    id: 'meria-brand',
+    title: 'Meria Lus’k Identity',
+    category: 'Branding / Portfolio',
+    status: 'Live',
+    featured: false,
+    stack: ['Next.js 14', 'Framer Motion', 'Lottie', 'Tailwind CSS'],
+    description: 'Identité numérique et portfolio professionnel pour Meria Lus’k. Conçu avec une approche "Dark Mode Premium" et des micro-animations interactives.',
+    impact: 'Présentation haute performance de mes compétences et de ma vision de "Digital Architect".',
+    image: '/projects/portfolio-ia.jpeg',
+    links: { demo: 'https://portfolio-meria.vercel.app' }
   },
   {
-    id: 'rh-excel',
-    title: 'Système RH Excel + Python',
-    stack: ['Python','Excel','SaaS'],
-    description: 'Gestion du personnel, paies, heures et horaires. Version SaaS en cours de développement.',
-    image: '/projects/rh-excel.png',
-    kpis: ['Gestion RH', 'Automatisation paie', 'SaaS en développement']
+    id: 'rh-excel-vba',
+    title: 'Système RH & Finance Excel',
+    category: 'Business Automation',
+    status: 'Live',
+    featured: false,
+    stack: ['Excel VBA', 'Python', 'Data Analysis'],
+    description: 'Automatisation complète de la gestion du personnel, des paies et de la facturation via des macros VBA et scripts Python.',
+    impact: 'Transformation de fichiers Excel statiques en véritables outils de pilotage décisionnel.',
+    image: '/projects/rh-excel.png'
+  },
+  {
+    id: 'z-foods',
+    title: 'Z Foods',
+    category: 'FoodTech',
+    status: 'Live',
+    featured: false,
+    stack: ['React 19', 'TypeScript', 'Tailwind CSS', 'WhatsApp API'],
+    description: 'Plateforme vitrine et système de commande directe pour un restaurant local. Optimisé pour la conversion mobile-first.',
+    impact: 'Digitalisation d’un commerce traditionnel avec une expérience utilisateur fluide.',
+    image: '/projects/copilot_image_1755644311563.jpeg'
+  },
+  {
+    id: 'ai-chatbots',
+    title: 'Chatbots Enterprise (Cozo)',
+    category: 'Artificial Intelligence',
+    status: 'Live',
+    featured: false,
+    stack: ['Node.js', 'OpenAI', 'Cozo DB', 'Vector Search'],
+    description: 'Agents conversationnels intelligents formés sur les données spécifiques des entreprises pour automatiser le support métier.',
+    impact: 'Disponibilité 24/7 et automatisation des réponses aux questions fréquentes.',
+    image: '/projects/chatbots-cozo.jpeg'
   }
-]
+];
