@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { services } from '@/lib/servicesData'
 import dynamic from 'next/dynamic'
