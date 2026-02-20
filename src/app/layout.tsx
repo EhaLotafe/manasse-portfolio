@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 
 // Métadonnées pour le SEO (Référencement)
 export const metadata: Metadata = {
-  title: "Overcome Solution | Architecte Digital & Fullstack Dev",
+  title: "Manasse Eha Lotafe | Architecte Digital & Fullstack Dev",
   description: "Solutions numériques pragmatiques, SaaS éducatifs et IA appliquée. Basé à Lubumbashi, RDC. Bâtir l'avenir digital par l'ingénierie.",
   keywords: ["Développeur Fullstack", "Lubumbashi", "RDC", "SaaS", "IA", "Architecture Digital", "Next.js", "Manassé Eha"],
   authors: [{ name: "Manassé Eha-lotafe", url: "https://github.com/EhaLotafe" }],

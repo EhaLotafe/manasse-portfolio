@@ -5,11 +5,6 @@ import { services } from '@/lib/servicesData'
 import dynamic from 'next/dynamic'
 import { ChevronRight } from 'lucide-react'
 
-// ÉTAPE 1 : Définir le type des propriétés (Props)
-interface ServicesSectionProps {
-  detailed?: boolean;
-}
-
 const Player = dynamic(
   () => import('@lottiefiles/react-lottie-player').then(mod => mod.Player),
   { ssr: false }
@@ -28,23 +23,19 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
 }
 
-// ÉTAPE 2 : Ajouter les props dans la fonction
-export default function ServicesSection({ detailed = false }: ServicesSectionProps) {
+export default function ServicesSection() {
   return (
     <section className="py-12 relative">
       <div className="grid lg:grid-cols-12 gap-12 items-center">
         
-        {/* --- COLONNE GAUCHE : TEXTE & SERVICES --- */}
+        {/* --- COLONNE GAUCHE : TEXTE & SERVICES (7/12) --- */}
         <div className="lg:col-span-7 space-y-8">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold font-display">
               Solutions <span className="text-overcome-accent">Sur-mesure.</span>
             </h2>
             <p className="text-text-secondary text-lg max-w-2xl">
-              {detailed 
-                ? "Découvrez l'ensemble de mes expertises techniques pour accompagner votre croissance digitale." 
-                : "De l'ingénierie logicielle à l'intelligence artificielle, je bâtis les outils qui propulsent votre croissance."
-              }
+              De l'ingénierie logicielle à l'intelligence artificielle, je bâtis les outils qui propulsent votre croissance.
             </p>
           </div>
 
@@ -84,9 +75,10 @@ export default function ServicesSection({ detailed = false }: ServicesSectionPro
           </motion.ul>
         </div>
 
-        {/* --- COLONNE DROITE : VISUEL LOTTIE --- */}
+        {/* --- COLONNE DROITE : VISUEL LOTTIE (5/12) --- */}
         <div className="lg:col-span-5 hidden lg:block sticky top-32">
           <div className="relative group">
+            {/* Aura lumineuse derrière le Lottie */}
             <div className="absolute inset-0 bg-overcome-accent/10 blur-[80px] rounded-full group-hover:bg-overcome-accent/20 transition-colors duration-700" />
             
             <div className="glass-card p-10 relative z-10 overflow-hidden">
@@ -103,6 +95,10 @@ export default function ServicesSection({ detailed = false }: ServicesSectionPro
                 <p className="text-sm text-text-muted font-medium italic">"Transformer la complexité en simplicité."</p>
               </div>
             </div>
+
+            {/* Décoration géométrique */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-overcome-accent/20 rounded-br-3xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-overcome-accent/20 rounded-tl-3xl" />
           </div>
         </div>
       </div>

@@ -1,14 +1,14 @@
-# Overcome Solution - 2026
+# Manasse Eha Lotafe - 2026
 
-![Overcome Solution Logo](public/logo.png)
+![Manasse Eha Lotafe Logo](public/logo.png)
 
-Un site vitrine moderne pour **Overcome Solution**, construit avec **Next.js 14**, **TypeScript** et **Tailwind CSS**, avec animations **Framer Motion** et intégration **Lottie**.
+Un site vitrine moderne pour **Manasse Eha Lotafe**, construit avec **Next.js 14**, **TypeScript** et **Tailwind CSS**, avec animations **Framer Motion** et intégration **Lottie**.
 
 ---
 
 ## 🚀 Démo en ligne
 
-- Portfolio / site officiel : [Overcome Solution Portfolio](https://portfolio-catalog.vercel.app/)
+- Portfolio / site officiel : [Manasse Eha Lotafe Portfolio](https://portfolio-catalog.vercel.app/)
 
 ---
 
