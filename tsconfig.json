@@ -19,7 +19,6 @@
       }
     ],
     /* Correction de la dépréciation */
-    "ignoreDeprecations": "6.0", 
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
