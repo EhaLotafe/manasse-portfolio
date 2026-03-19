@@ -1,5 +1,5 @@
 /* ===============================
-   Global Styles 
+   Global Styles - Architecture Digitale 2026
    =============================== */
 
 /* 1. Imports — Space Grotesk (Titres) & Inter (Corps) */
@@ -9,28 +9,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Root Variables — Palette 2026 (Inspirée par ton design "Sober & Modern") */
+/* 2. Root Variables — Palette "Corporate & Résiliente" */
 @layer base {
   :root {
-    /* Fond & Structure */
-    --bg-primary: #0E1116;        /* Noir bleuté profond */
-    --bg-secondary: #151A22;      /* Sections secondaires */
-    --bg-card: #1B2230;           /* Fond des cartes */
+    /* Fond & Structure (OLED Black pour performance et sobriété) */
+    --bg-primary: #050505;        /* Noir absolu / OLED */
+    --bg-secondary: #0A0A0A;      /* Sections secondaires */
+    --bg-card: #121212;           /* Fond des cartes (Gris très foncé) */
     
-    /* Accents */
-    --accent-primary: #3B82F6;    /* Bleu Action (Linker) */
-    --accent-success: #22C55E;    /* Vert Impact */
-    --accent-highlight: #F59E0B;  /* Or Focus */
+    /* Accents (Matures et Business) */
+    --accent-primary: #10B981;    /* Vert Émeraude (Croissance, AgriConnect, Finance) */
+    --accent-primary-hover: #059669; 
+    --accent-highlight: #F59E0B;  /* Ambre/Or (Prestige, Weylandts) */
     
-    /* Texte */
-    --text-primary: #E8ECF1;      /* Titres */
-    --text-secondary: #A7B0C0;    /* Paragraphes */
-    --text-muted: #6F7A8A;        /* Labels */
+    /* Texte (Haute lisibilité) */
+    --text-primary: #F3F4F6;      /* Blanc cassé pour éviter la fatigue visuelle */
+    --text-secondary: #9CA3AF;    /* Gris neutre pour paragraphes */
+    --text-muted: #6B7280;        /* Gris sombre pour labels et métadonnées */
 
-    /* Design System */
-    --radius-xl: 16px;            /* Standard 2026 */
-    --glass-border: rgba(255, 255, 255, 0.05);
-    --glass-bg: rgba(27, 34, 48, 0.5);
+    /* Design System (Plus net, moins arrondi pour faire "Sérieux") */
+    --radius-lg: 8px;             /* Boutons */
+    --radius-xl: 12px;            /* Cartes */
+    --border-subtle: rgba(255, 255, 255, 0.08); /* Bordure ultra fine et élégante */
   }
 
   /* 3. Base Styles */
@@ -40,80 +40,83 @@
   }
 
   body {
-    @apply bg-overcome-bg text-text-primary antialiased;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4 {
-    @apply font-display tracking-tight text-text-primary;
     font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em; /* Titres légèrement resserrés pour faire "Tech" */
+    color: #ffffff;
   }
 
   p {
-    @apply text-text-secondary;
+    color: var(--text-secondary);
   }
 }
 
-/* 4. Composants Premium (Classes personnalisées) */
+/* 4. Composants B2B Premium */
 @layer components {
   
-  /* Container avec largeur contrôlée pour éviter l'étirement sur grands écrans */
+  /* Container standardisé */
   .container-max {
     @apply mx-auto w-full max-w-7xl px-6 lg:px-12;
   }
 
-  /* Effet Glassmorphism pour les cartes projets et services */
-  .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+  /* Cartes Solides (Remplacent le Glassmorphism qui fait ramer les mobiles) */
+  .solid-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
-    
-    /* Correction de l'erreur ici 👇 */
-    @apply transition-all duration-500; 
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+    @apply transition-all duration-300; 
   }
 
-  .glass-card:hover {
-    @apply border-overcome-accent/30;
-    background: rgba(27, 34, 48, 0.8);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  .solid-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8); /* Ombre d'élévation, pas de lumière néon */
   }
 
-  /* Bouton Premium Overcome */
+  /* Boutons Enterprise */
   .btn-premium {
-    @apply relative inline-flex items-center justify-center overflow-hidden px-8 py-3.5 font-semibold transition-all duration-300 active:scale-95 disabled:opacity-50;
-    border-radius: var(--radius-xl);
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-medium transition-all duration-200 active:scale-95 disabled:opacity-50;
+    border-radius: var(--radius-lg);
   }
 
   .btn-primary {
-    @apply bg-overcome-accent text-white hover:bg-blue-600 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)];
+    background-color: var(--accent-primary);
+    color: #000000; /* Texte noir sur fond Émeraude = Impact maximum */
+    @apply hover:bg-emerald-500 hover:shadow-lg;
+    /* Fini le shadow-glow fluo, place à une ombre classique portée */
   }
 
   .btn-outline {
-    @apply border border-overcome-accent/50 text-overcome-accent hover:bg-overcome-accent/10;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    @apply hover:bg-white/5 hover:border-white/20;
   }
 
-  /* Badges de statut (Live, In Progress, etc.) */
+  /* Badges de statut (Minimalistes) */
   .status-badge {
-    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest border;
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider border;
   }
 
   .status-live {
-    @apply bg-overcome-success/10 text-overcome-success border-overcome-success/20;
+    @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
   }
 
   .status-dev {
-    @apply bg-overcome-highlight/10 text-overcome-highlight border-overcome-highlight/20;
+    @apply bg-amber-500/10 text-amber-400 border-amber-500/20;
   }
 
-  /* Titre de Section (Style 2026) */
+  /* Titre de Section Architecte */
   .section-title {
-    @apply mb-12 text-center;
+    @apply mb-12 text-center flex flex-col items-center;
   }
   
   .section-title h2 {
@@ -121,33 +124,29 @@
   }
 
   .section-title .underline-accent {
-    @apply mx-auto mt-4 h-1 w-20 rounded-full bg-overcome-accent;
+    @apply mt-4 h-1 w-12 bg-emerald-500; /* Ligne plus courte et stricte */
   }
 }
 
-/* 5. Utilitaires de Fond & Animations */
+/* 5. Utilitaires & Effets (Sobres) */
 @layer utilities {
   
-  /* Halo lumineux discret pour la section Hero */
-  .hero-mesh {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
+  /* Dégradé de texte corporate (Métallique/Grisé, sans clignotement) */
+  .text-gradient-corporate {
+    background: linear-gradient(to right, #ffffff, #888888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Animation de texte dégradé */
-  .text-gradient {
-    @apply bg-gradient-to-r from-white via-overcome-accent to-white bg-clip-text text-transparent bg-[length:200%_auto] animate-pulse-slow;
+  /* Masque de fondu pour les bords (carrousels, listes) */
+  .mask-fade-edges {
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
   }
 }
 
-/* 6. Custom Scrollbar (Sobriété Digitale) */
+/* 6. Custom Scrollbar (Invisible presque) */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -157,27 +156,20 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-card);
+  background: #222222;
   border-radius: 10px;
-  @apply transition-colors;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-primary);
 }
 
-/* 7. Focus Accessible */
+/* 7. Focus Accessible (Sérieux) */
 :focus-visible {
-  @apply outline-none ring-2 ring-overcome-accent ring-offset-4 ring-offset-overcome-bg;
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-[#050505];
 }
 
 /* 8. Fix pour les images Lottie */
 .lottie-container svg {
-  @apply drop-shadow-2xl;
-}
-@layer utilities {
-  .mask-fade-edges {
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  }
+  @apply drop-shadow-lg; /* Moins intense que 2xl */
 }

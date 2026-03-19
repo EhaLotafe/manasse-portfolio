@@ -1,0 +1,42 @@
+[
+  {
+    "id": "react-19-supabase",
+    "name": "React 19 & Supabase (BaaS)",
+    "category": "Frontend & Cloud",
+    "project": "Lubum Food / BioLink",
+    "projectLink": "/projects",
+    "description": "Création d'architectures SaaS modernes avec base de données temps réel et upload de fichiers via Supabase Storage."
+  },
+  {
+    "id": "offline-first",
+    "name": "Architecture Offline-First",
+    "category": "Ingénierie Low-Tech",
+    "project": "AgriConnect",
+    "projectLink": "/projects",
+    "description": "Développement de SyncManager asynchrone pour la persistance locale des données et la synchronisation post-connexion (zones 3G/EDGE)."
+  },
+  {
+    "id": "ia-llm",
+    "name": "Intégration d'IA (OpenAI/Gemini)",
+    "category": "Intelligence Artificielle",
+    "project": "Weylandts / Chatbots Cozo",
+    "projectLink": "/projects",
+    "description": "Génération de contenu dynamique, RAG (Retrieval-Augmented Generation) et automatisation du support métier."
+  },
+  {
+    "id": "vba-data",
+    "name": "Excel VBA, Python & Pédagogie",
+    "category": "Consulting & Business",
+    "project": "Système RH Excel",
+    "projectLink": "/projects",
+    "description": "Automatisation des processus financiers complexes (paie, facturation) et formation des utilisateurs finaux en entreprise."
+  },
+  {
+    "id": "funnel-marketing",
+    "name": "Tunnels de Vente & Paiement Mobile",
+    "category": "E-commerce & Infoprenariat",
+    "project": "Digital Mastery Hub",
+    "projectLink": "/projects",
+    "description": "Création de parcours clients optimisés pour la conversion intégrant les API de paiement mobile locaux (Airtel Money, M-Pesa)."
+  }
+]

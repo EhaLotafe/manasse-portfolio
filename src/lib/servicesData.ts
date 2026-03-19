@@ -1,10 +1,11 @@
+// src/lib/servicesData.ts
 import { 
   Code2, 
-  Rocket, 
   Cpu, 
-  Palette, 
-  ShieldCheck, 
   Smartphone,
+  Database,
+  GraduationCap,
+  Palette,
   LucideIcon 
 } from 'lucide-react';
 
@@ -22,48 +23,48 @@ export const services: Service[] = [
     id: 'web-saas',
     title: 'Ingénierie Web & SaaS',
     description: 'Conception d’architectures logicielles modernes et scalables. Développement de plateformes multi-rôles, dashboards complexes et infrastructures cloud sécurisées.',
-    stack: ['React', 'Next.js 14', 'Node.js', 'PostgreSQL', 'SaaS Architecture'],
+    stack: ['React', 'Next.js 14', 'Node.js', 'PostgreSQL', 'Supabase'],
     icon: Code2,
-    color: 'text-overcome-accent' // Bleu
+    color: 'text-blue-500 dark:text-blue-400'
   },
   {
     id: 'ia-integration',
     title: 'IA & Automations Métier',
     description: 'Intégration d’agents intelligents (LLM) et automatisation de workflows pour booster la productivité. Transformation de vos processus internes grâce à l’IA générative.',
-    stack: ['OpenAI', 'Agents IA', 'RAG', 'Workflow Automation', 'Python'],
+    stack: ['OpenAI', 'Agents IA', 'RAG', 'Workflow Automation'],
     icon: Cpu,
-    color: 'text-overcome-success' // Vert
-  },
-  {
-    id: 'product-strategy',
-    title: 'Stratégie Produit & MVP',
-    description: 'Accompagnement de l’idée au déploiement. Définition de la roadmap, priorisation des fonctionnalités critiques et structuration technique pour un lancement rapide.',
-    stack: ['Product Thinking', 'MVP Design', 'Agile', 'Scalability Strategy'],
-    icon: Rocket,
-    color: 'text-overcome-highlight' // Or/Ambre
-  },
-  {
-    id: 'branding-ia',
-    title: 'Branding & Contenu IA',
-    description: 'Création d’identités visuelles distinctives et de stratégies de contenu assistées par IA. Optimisation de votre présence numérique pour la conversion et l’influence.',
-    stack: ['Midjourney', 'Digital Branding', 'Prompt Engineering', 'Copywriting'],
-    icon: Palette,
-    color: 'text-overcome-accent' // Bleu
-  },
-  {
-    id: 'tech-support',
-    title: 'Audit & Optimisation Tech',
-    description: 'Analyse approfondie de vos systèmes existants. Refonte UX/UI, optimisation de performance, sécurisation des données et mise aux normes de votre stack technique.',
-    stack: ['Security Audit', 'Performance Optimization', 'UX/UI Refactor'],
-    icon: ShieldCheck,
-    color: 'text-text-muted' // Gris/Muted
+    color: 'text-purple-500 dark:text-purple-400' 
   },
   {
     id: 'local-pme',
-    title: 'Solutions Low-Tech pour PME',
-    description: 'Développement d’outils pragmatiques et économiques adaptés aux réalités du terrain (RDC/Afrique). Focus sur l’accessibilité, le hors-ligne et la faible connectivité.',
-    stack: ['USSD', 'SMS Gateway', 'Offline-First', 'Cost-Effective Tech'],
+    title: 'Solutions Low-Tech (RDC)',
+    description: 'Développement d’outils pragmatiques adaptés aux réalités du terrain (faible connectivité). Focus sur l’accessibilité, les architectures Offline-First et les USSD.',
+    stack: ['Offline-First', 'SyncManager', 'Mobile Payment', 'USSD/SMS'],
     icon: Smartphone,
-    color: 'text-overcome-success' // Vert
+    color: 'text-emerald-500 dark:text-emerald-400'
+  },
+  {
+    id: 'data-vba',
+    title: 'Business Data & Excel VBA',
+    description: 'Automatisation de la gestion du personnel, de la paie et de la facturation. Transformation de vos fichiers Excel statiques en véritables outils de pilotage décisionnel.',
+    stack: ['Excel VBA', 'Python', 'Analyse de Données', 'Macros'],
+    icon: Database,
+    color: 'text-amber-500 dark:text-amber-400'
+  },
+  {
+    id: 'formation-mentoring',
+    title: 'Formation & E-learning',
+    description: 'Accompagnement pédagogique et transfert de compétences. Mise à disposition de ressources numériques (Digital Mastery Hub) et coaching sur les outils technologiques.',
+    stack: ['Pédagogie', 'Mentoring Tech', 'Infoprenariat', 'Support B2C'],
+    icon: GraduationCap,
+    color: 'text-rose-500 dark:text-rose-400'
+  },
+  {
+    id: 'branding-ui',
+    title: 'Branding & UI/UX Premium',
+    description: 'Création d’identités numériques distinctives (Dark Mode, Glassmorphism). Optimisation de votre présence en ligne avec des interfaces fluides et des micro-animations.',
+    stack: ['Tailwind CSS', 'Framer Motion', 'Design System', 'Lottie'],
+    icon: Palette,
+    color: 'text-cyan-500 dark:text-cyan-400'
   }
 ];

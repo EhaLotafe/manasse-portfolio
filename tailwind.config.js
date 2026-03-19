@@ -7,45 +7,43 @@ module.exports = {
   ],
   theme: {
     extend: {
-      /* === Palette Overcome 2026 (Premium Dark) === */
+      /* === Palette Architecte Digital 2026 (Premium OLED) === */
       colors: {
         overcome: {
-          bg: "#0E1116",        // Fond profond
-          secondary: "#151A22", // Sections secondaires
-          card: "#1B2230",      // Fond des cartes (Glassmorphism)
-          accent: "#3B82F6",    // Bleu Action (le "Linker")
-          success: "#22C55E",   // Vert (Impact / Live)
-          highlight: "#F59E0B", // Or/Ambre (Focus / Premium)
+          bg: "#050505",        // Noir Absolu (OLED) - Performance & Sobriété
+          secondary: "#0A0A0A", // Sections secondaires
+          card: "#121212",      // Gris très foncé pour les cartes (Solid)
+          accent: "#10B981",    // Vert Émeraude (Croissance, Finance, AgriConnect)
+          accentHover: "#059669",// Émeraude foncé pour le hover des boutons
+          success: "#10B981",   // Vert (Impact / Live)
+          highlight: "#F59E0B", // Or/Ambre (Prestige / Weylandts)
         },
         text: {
-          primary: "#E8ECF1",   // Titres et texte important
-          secondary: "#A7B0C0", // Descriptions
-          muted: "#6F7A8A",      // Détails techniques
+          primary: "#F3F4F6",   // Blanc cassé (Évite la fatigue visuelle B2B)
+          secondary: "#9CA3AF", // Descriptions claires
+          muted: "#6B7280",     // Détails techniques et labels
         }
       },
 
-      /* === Typographies 2026 === */
+      /* === Typographies === */
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "sans-serif"], // Pour les titres h1, h2, h3
+        display: ["Space Grotesk", "sans-serif"], // Titres Tech/Data
       },
 
-      /* === Radius 2026 (Sobriété & Design) === */
+      /* === Radius B2B (Moins ronds, plus sérieux) === */
       borderRadius: {
         'sm': '4px',
-        'md': '8px',
-        'lg': '12px',
-        'xl': '16px',  // Le standard pour tes cartes
-        '2xl': '24px',
+        'md': '6px',
+        'lg': '8px',   // Boutons standard
+        'xl': '12px',  // Cartes Projets/Services
+        '2xl': '16px',
       },
 
-      /* === Animations subtiles === */
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      },
-      
+      /* === Ombres Corporate (Élévation, pas de Néon) === */
       boxShadow: {
-        'glow': '0 0 20px -5px rgba(59, 130, 246, 0.5)',
+        'elevation': '0 10px 30px -10px rgba(0, 0, 0, 0.8)', // Ombre douce vers le bas
+        'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.5)',
       },
 
       /* === Breakpoints === */
