@@ -1,14 +1,14 @@
 // src/components/HeroSection.tsx
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, ChevronDown, Zap, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 // MÉLANGE : PROJETS + MANASSÉ
-// ⚠️ IMPORTANT : J'ai remplacé me-2.HEIC par me-2.jpg. Convertis ton fichier !
+// ⚠️ IMPORTANT : Assure-toi que me-2.jpg existe bien dans ton dossier public/
 const column1 = [
   '/projects/agric-connect.jpeg',
   '/me-1.jpg',
@@ -28,13 +28,11 @@ const column3 = [
 ]
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false)
+  // SUPPRESSION de l'état "mounted". Framer Motion gère le SSR nativement.
   const containerRef = useRef<HTMLElement>(null)
 
-  useEffect(() => { setMounted(true) }, [])
-
- const { scrollYProgress } = useScroll({
-    target: containerRef as React.RefObject<HTMLElement>,
+  const { scrollYProgress } = useScroll({
+    target: containerRef, // Plus besoin de bidouiller, on passe juste la ref
     offset: ["start start", "end start"]
   })
 
@@ -42,9 +40,6 @@ export default function HeroSection() {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -250])
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 250])
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150])
-
-  // Évite les erreurs d'hydratation
-  if (!mounted) return <section className="min-h-screen bg-[#050505]" />
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#050505] pt-20 border-b border-white/5">
@@ -70,7 +65,6 @@ export default function HeroSection() {
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-display leading-[0.95] tracking-tight text-white">
             MANASSÉ <br />
-            {/* Le dégradé corporate (Blanc vers Gris) remplace le texte clignotant */}
             <span className="text-gradient-corporate">LOTAFE.</span>
           </h1>
           
@@ -79,7 +73,7 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-6">
-            <Link href="#contact" className="btn-premium btn-primary flex items-center justify-center gap-2 group">
+            <Link href="/#contact" className="btn-premium btn-primary flex items-center justify-center gap-2 group">
               Démarrer un projet 
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
@@ -88,7 +82,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          {/* KPIs / Chiffres clés (Style Dashboard) */}
+          {/* KPIs / Chiffres clés */}
           <div className="flex items-center gap-8 md:gap-12 pt-10 border-t border-white/5 mt-8">
             <div className="flex flex-col">
               <span className="text-3xl font-bold text-white">10+</span>
@@ -119,7 +113,7 @@ export default function HeroSection() {
                   alt="Réalisation Manassé" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={i === 0} // Charge la première image en priorité absolue
+                  priority={i === 0}
                   className={`object-cover rounded-lg transition-all duration-700 ${src.includes('me') ? 'grayscale-0' : 'opacity-60 grayscale hover:opacity-100 hover:grayscale-0'}`} 
                 />
               </div>
