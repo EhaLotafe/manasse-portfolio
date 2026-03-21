@@ -1,14 +1,11 @@
-// src/components/ProjectsGrid.tsx
-'use client'
-
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion' // ⚠️ AJOUT DE "Variants" ICI
 import Image from 'next/image'
 import Link from 'next/link'
 import { projects } from '@/lib/projectsData'
 import { Github, ExternalLink, Trophy, Code2, ArrowRight } from 'lucide-react'
 
-// Animation pour l'apparition en cascade (Stagger)
-const containerVariants = {
+// ⚠️ AJOUT DU TYPE ": Variants" ICI
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,15 +13,15 @@ const containerVariants = {
   }
 }
 
-const cardVariants = {
+// ⚠️ AJOUT DU TYPE ": Variants" ICI
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.6, ease:[0.16, 1, 0.3, 1] } 
+    transition: { duration: 0.6, ease: "easeOut" } 
   }
 }
-
 interface ProjectsGridProps {
   showAll?: boolean;
 }

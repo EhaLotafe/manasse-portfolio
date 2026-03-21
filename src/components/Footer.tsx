@@ -2,7 +2,7 @@
 "use client";
 
 import React, { ElementType } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { 
   FaLinkedin, FaGithub, FaWhatsapp, FaFacebook, FaShoppingBag 
 } from "react-icons/fa";
@@ -33,14 +33,13 @@ const FooterLink = ({ href, icon: Icon, text, external = true }: FooterLinkProps
     <ArrowUpRight size={14} className="text-gray-600 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
   </a>
 );
-
 // --- Animation des colonnes ---
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" }
+    transition: { delay: i * 0.1, duration: 0.5 } // <-- Plus de mot "ease" ici !
   })
 };
 
