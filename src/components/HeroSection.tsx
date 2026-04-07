@@ -1,14 +1,12 @@
 // src/components/HeroSection.tsx
 'use client'
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, ChevronDown, Zap, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// MÉLANGE : PROJETS + MANASSÉ
-// ⚠️ IMPORTANT : Assure-toi que me-2.jpg existe bien dans ton dossier public/
 const column1 = [
   '/projects/agric-connect.jpeg',
   '/me-1.jpg',
@@ -28,21 +26,18 @@ const column3 = [
 ]
 
 export default function HeroSection() {
-  // SUPPRESSION de l'état "mounted". Framer Motion gère le SSR nativement.
-  const containerRef = useRef<HTMLElement>(null)
+  // ✅ CORRECTION CRITIQUE : On écoute le défilement global de la page.
+  // Plus de "useRef", plus de "target". Ça empêche le crash SSR à 100%.
+  const { scrollY } = useScroll()
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef, // Plus besoin de bidouiller, on passe juste la ref
-    offset: ["start start", "end start"]
-  })
-
-  // Vitesses de parallaxe pour créer de la profondeur
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -250])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 250])
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150])
+  // On ajuste les valeurs de la parallaxe en fonction des pixels défilés (de 0 à 1000px)
+  const y1 = useTransform(scrollY, [0, 1000], [0, -250])
+  const y2 = useTransform(scrollY, [0, 1000], [0, 250])
+  const y3 = useTransform(scrollY, [0, 1000], [0, -150])
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#050505] pt-20 border-b border-white/5">
+    // ⚠️ Plus de ref={containerRef} ici, on a nettoyé la balise !
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#050505] pt-20 border-b border-white/5">
       
       <div className="container-max grid lg:grid-cols-12 gap-12 items-center z-10">
         
@@ -104,47 +99,33 @@ export default function HeroSection() {
         {/* --- PARALLAX GRID DROITE (5 COLONNES) --- */}
         <div className="lg:col-span-5 relative h-[700px] hidden lg:grid grid-cols-3 gap-4 mask-fade-edges">
           
-          {/* Colonne 1 : Monte vite */}
           <motion.div style={{ y: y1 }} className="flex flex-col gap-4">
             {column1.map((src, i) => (
               <div key={`c1-${i}`} className="relative aspect-[3/4] rounded-xl overflow-hidden solid-card p-1 shrink-0">
                 <Image 
-                  src={src} 
-                  alt="Réalisation Manassé" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={i === 0}
+                  src={src} alt="Réalisation Manassé" fill sizes="(max-width: 768px) 100vw, 33vw" priority={i === 0}
                   className={`object-cover rounded-lg transition-all duration-700 ${src.includes('me') ? 'grayscale-0' : 'opacity-60 grayscale hover:opacity-100 hover:grayscale-0'}`} 
                 />
               </div>
             ))}
           </motion.div>
 
-          {/* Colonne 2 : Descend */}
           <motion.div style={{ y: y2 }} className="flex flex-col gap-4 pt-24">
             {column2.map((src, i) => (
               <div key={`c2-${i}`} className="relative aspect-[3/4] rounded-xl overflow-hidden solid-card p-1 shrink-0">
                 <Image 
-                  src={src} 
-                  alt="Réalisation Manassé" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={i === 0}
+                  src={src} alt="Réalisation Manassé" fill sizes="(max-width: 768px) 100vw, 33vw" priority={i === 0}
                   className={`object-cover rounded-lg transition-all duration-700 ${src.includes('me') ? 'grayscale-0' : 'opacity-60 grayscale hover:opacity-100 hover:grayscale-0'}`} 
                 />
               </div>
             ))}
           </motion.div>
 
-          {/* Colonne 3 : Monte doucement */}
           <motion.div style={{ y: y3 }} className="flex flex-col gap-4 pt-10">
             {column3.map((src, i) => (
               <div key={`c3-${i}`} className="relative aspect-[3/4] rounded-xl overflow-hidden solid-card p-1 shrink-0">
                 <Image 
-                  src={src} 
-                  alt="Réalisation Manassé" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  src={src} alt="Réalisation Manassé" fill sizes="(max-width: 768px) 100vw, 33vw"
                   className={`object-cover rounded-lg transition-all duration-700 ${src.includes('me') ? 'grayscale-0' : 'opacity-60 grayscale hover:opacity-100 hover:grayscale-0'}`} 
                 />
               </div>
@@ -153,7 +134,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Indicateur de Scroll Minimaliste */}
       <motion.div 
         animate={{ y: [0, 8, 0], opacity: [0.3, 1, 0.3] }}
         transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
