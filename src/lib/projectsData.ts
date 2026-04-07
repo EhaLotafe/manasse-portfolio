@@ -47,7 +47,7 @@ export const projects: Project[] = [
     description: 'Plateforme SaaS "Link-in-Bio" de nouvelle génération pour les créateurs et entreprises en RDC. Design Liquid Glass, Smart Links et Analytics de précision.',
     impact: 'Centralisation de la présence numérique avec monétisation intégrée (Mobile Money) et tableau de bord Analytics complet.',
     image: '/projects/biolink.jpg',
-    links: { github: 'https://github.com/votre-username/biolink' },
+    links: { demo: 'biolinkweb.netlify.app' },
     longDescription: `**BioLink RDC** est plus qu'un agrégateur de liens. C'est une vitrine professionnelle premium. 
     Fonctionnalités clés : Liens pulsants, protection par mot de passe, géolocalisation du trafic, et upload d'avatars via Supabase Storage. Le design utilise un effet OLED Black et Glassmorphism.`
   },
@@ -61,6 +61,7 @@ export const projects: Project[] = [
     description: 'Marketplace résiliente connectant agriculteurs ruraux et acheteurs urbains. Intègre une innovation "Offline-First" pour les zones à faible connectivité.',
     impact: 'Digitalisation du circuit court, traçabilité des récoltes et autonomisation en zone blanche (EDGE/3G instable).',
     image: '/projects/agric-connect.jpeg',
+    links: { demo : 'https://agri-connect-rdc.vercel.app/' },
     longDescription: `Projet de TFC innovant. Utilisation d'un **SyncManager asynchrone** permettant à l'agriculteur de préparer ses offres hors-ligne au champ. Les données sont persistées localement et synchronisées automatiquement dès le retour du réseau.`
   },
   {

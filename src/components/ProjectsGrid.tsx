@@ -1,3 +1,4 @@
+"use client"
 import { motion, Variants } from 'framer-motion' // ⚠️ AJOUT DE "Variants" ICI
 import Image from 'next/image'
 import Link from 'next/link'

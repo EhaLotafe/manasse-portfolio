@@ -50,9 +50,6 @@ export default function HeroSection() {
         >
           {/* Badges de localisation & Rôle */}
           <div className="flex flex-wrap items-center gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[11px] font-bold uppercase tracking-widest">
-              <Zap size={14} /> Architecte Digital • 2026
-            </div>
             <div className="flex items-center gap-2 text-gray-400 text-[11px] uppercase tracking-widest font-bold bg-white/5 px-3 py-1.5 rounded-md border border-white/5">
               <MapPin size={14} /> Lubumbashi, RDC
             </div>
